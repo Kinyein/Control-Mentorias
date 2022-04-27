@@ -2,7 +2,7 @@ import React from 'react'
 
 const EditMonitorias = () => {
   return (
-    <div>EditMonitorias</div>
+    <div>EditMonitorias</div> 
   )
 }
 
