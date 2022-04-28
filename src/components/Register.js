@@ -1,12 +1,12 @@
 import { Formik } from "formik";
 import * as yup from "yup";
 import React from "react";
-import { FcGoogle } from 'react-icons/fc'
-import { BsFacebook } from 'react-icons/bs'
+import { BsFacebook, BsGoogle } from 'react-icons/bs'
 import { useDispatch } from "react-redux";
 import { registerAsync } from "../Redux/actions/registerActions";
-import { LoginGoogleFace } from "../styles/styledComp/formsStyle";
+import { ContainerForm, LoginGoogleFace } from "../styles/styledComp/formsStyle";
 import { loginGoogle } from "../Redux/actions/loginActions";
+import { Link } from "react-router-dom";
 
 let schema = yup.object().shape({
 	name: yup.string().required("Campo Requerido"),
@@ -22,10 +22,10 @@ const Register = () => {
 
 	const handleGoogle = () => {
 		dispatch(loginGoogle())
-}
+	}
 
 	return (
-		<div>
+		<ContainerForm>
 			<h1>Register</h1>
 			<Formik
 				initialValues={{
@@ -85,17 +85,19 @@ const Register = () => {
 						) : null}
 
 						<button type="submit">
-							Submit
+							Register
 						</button>
 
 						<LoginGoogleFace>
-							<FcGoogle className='icon' onClick={handleGoogle} />
-							<BsFacebook className='icon' />
+							<div onClick={handleGoogle} className='iconContainer iconContainerGoogle'><BsGoogle className='icon iconGoogle' /> <p>Inicia Sesión con Google</p></div>
+							<div className='iconContainer iconContainerFacebook'><BsFacebook className='icon iconFacebook' /> <p>Inicia Sesión con Facebook</p></div>
 						</LoginGoogleFace>
+
+						<p>¿Ya tienes cuenta? <Link to="/login"> Inicia sesión </Link></p>
 					</form>
 				)}
 			</Formik>
-		</div>
+		</ContainerForm>
 	);
 };
 

@@ -1,6 +1,9 @@
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addMonitorSinc } from '../Redux/actions/monitoresActions';
+import { ContainerForm } from '../styles/styledComp/formsStyle';
 
 let schema = yup.object().shape({
     names: yup.string().required('Campo Requerido'),
@@ -13,8 +16,11 @@ let schema = yup.object().shape({
 });
 
 const AddMonitor = () => {
+
+    const dispatch = useDispatch()
+
     return (
-        <div>
+        <ContainerForm>
             <h1>Añadir Monitor</h1>
             <Formik
                 initialValues={{
@@ -29,6 +35,7 @@ const AddMonitor = () => {
                 validationSchema={schema}
 
                 onSubmit={(values) => {
+                    dispatch(addMonitorSinc(values))
                     console.log(values)
                 }}
             >
@@ -105,7 +112,7 @@ const AddMonitor = () => {
                     </form>
                 )}
             </Formik>
-        </div>
+        </ContainerForm>
     )
 }
 

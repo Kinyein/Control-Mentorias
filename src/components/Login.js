@@ -1,11 +1,11 @@
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import React from 'react'
-import { FcGoogle } from 'react-icons/fc'
-import { BsFacebook } from 'react-icons/bs'
+import { BsFacebook, BsGoogle } from 'react-icons/bs'
 import { useDispatch } from 'react-redux';
-import { loginAsync, loginGoogle, logoutAsync } from '../Redux/actions/loginActions';
-import { Error, LoginGoogleFace } from '../styles/styledComp/formsStyle';
+import { loginAsync, loginGoogle } from '../Redux/actions/loginActions';
+import { ContainerForm, Error, LoginGoogleFace } from '../styles/styledComp/formsStyle';
+import { Link } from 'react-router-dom';
 
 let schema = yup.object().shape({
     email: yup.string().email('Debe escribir un correo valido').required('Campo Requerido'),
@@ -20,12 +20,10 @@ const Login = () => {
         dispatch(loginGoogle())
     }
 
-    const handleLogout = () => {
-        dispatch(logoutAsync())
-    }
+    
 
     return (
-        <div>
+        <ContainerForm>
             <h1>Login</h1>
             <Formik
                 initialValues={{
@@ -74,23 +72,23 @@ const Login = () => {
                         ) : null}
 
                         <button type="submit">
-                            Submit
+                            Login
                         </button>
 
 
 
                         <LoginGoogleFace>
-                            <FcGoogle className='icon' onClick={handleGoogle} />
-                            <BsFacebook className='icon' />
+                            <div onClick={handleGoogle} className='iconContainer iconContainerGoogle'><BsGoogle className='icon iconGoogle' /> <p>Inicia Sesión con Google</p></div>
+                            <div className='iconContainer iconContainerFacebook'><BsFacebook className='icon iconFacebook' /> <p>Inicia Sesión con Facebook</p></div>
                         </LoginGoogleFace>
+
+                        <p>¿No tienes cuenta? <Link to="/register"> Registrate </Link></p>
                     </form>
                 )}
             </Formik>
 
-            <button onClick={handleLogout}>
-                Logout
-            </button>
-        </div>
+            
+        </ContainerForm>
     )
 }
 
