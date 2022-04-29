@@ -2,15 +2,15 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addMonitorSinc } from '../Redux/actions/monitoresActions';
-import { ContainerForm } from '../styles/styledComp/formsStyle';
+import { addMonitorAsync } from '../Redux/actions/monitoresActions';
+import { ContainerForm, Error } from '../styles/styledComp/formsStyle';
 
 let schema = yup.object().shape({
     names: yup.string().required('Campo Requerido'),
     lastNames: yup.string().required('Campo Requerido'),
     academicProgram: yup.string().required('Campo Requerido'),
     semester: yup.string().required('Campo Requerido'),
-    cedula: yup.number('Debe escribir un numero valido').required('Campo Requerido'),
+    cedula: yup.string('').required('Campo Requerido'),
     tel: yup.number('Debe escribir un numero valido').min(10).required('Campo Requerido'),
     email: yup.string().email('Debe escribir un correo valido').required('Campo Requerido')
 });
@@ -35,7 +35,7 @@ const AddMonitor = () => {
                 validationSchema={schema}
 
                 onSubmit={(values) => {
-                    dispatch(addMonitorSinc(values))
+                    dispatch(addMonitorAsync(values))
                     console.log(values)
                 }}
             >
@@ -45,8 +45,7 @@ const AddMonitor = () => {
                     touched,
                     handleChange,
                     handleBlur,
-                    handleSubmit,
-                    isSubmitting,
+                    handleSubmit
                     /* and other goodies */
                 }) => (
                     <form onSubmit={handleSubmit}>
@@ -57,7 +56,9 @@ const AddMonitor = () => {
                             onBlur={handleBlur}
                             value={values.names}
                         />
-                        {errors.names && touched.names && errors.names}
+                        {errors.names && touched.names ? (
+                            <Error>{errors.names}</Error>
+                        ) : null}
                         <input
                             name="lastNames"
                             placeholder='Apellidos'
@@ -65,7 +66,9 @@ const AddMonitor = () => {
                             onBlur={handleBlur}
                             value={values.lastNames}
                         />
-                        {errors.lastNames && touched.lastNames && errors.lastNames}
+                        {errors.lastNames && touched.lastNames ? (
+                            <Error>{errors.lastNames}</Error>
+                        ) : null}
                         <input
                             name="academicProgram"
                             placeholder='Programa Academico'
@@ -73,7 +76,9 @@ const AddMonitor = () => {
                             onBlur={handleBlur}
                             value={values.academicProgram}
                         />
-                        {errors.academicProgram && touched.academicProgram && errors.academicProgram}
+                        {errors.academicProgram && touched.academicProgram ? (
+                            <Error>{errors.academicProgram}</Error>
+                        ) : null}
                         <input
                             name="semester"
                             placeholder='Semestre'
@@ -81,7 +86,9 @@ const AddMonitor = () => {
                             onBlur={handleBlur}
                             value={values.semester}
                         />
-                        {errors.semester && touched.semester && errors.semester}
+                        {errors.semester && touched.semester ? (
+                            <Error>{errors.semester}</Error>
+                        ) : null}
                         <input
                             name="cedula"
                             placeholder='Cedula'
@@ -89,7 +96,9 @@ const AddMonitor = () => {
                             onBlur={handleBlur}
                             value={values.cedula}
                         />
-                        {errors.cedula && touched.cedula && errors.cedula}
+                        {errors.cedula && touched.cedula ? (
+                            <Error>{errors.cedula}</Error>
+                        ) : null}
                         <input
                             name="tel"
                             placeholder='Telefono'
@@ -97,7 +106,9 @@ const AddMonitor = () => {
                             onBlur={handleBlur}
                             value={values.tel}
                         />
-                        {errors.tel && touched.tel && errors.tel}
+                        {errors.tel && touched.tel ? (
+                            <Error>{errors.tel}</Error>
+                        ) : null}
                         <input
                             name="email"
                             placeholder='Correo'
@@ -105,8 +116,11 @@ const AddMonitor = () => {
                             onBlur={handleBlur}
                             value={values.email}
                         />
-                        {errors.email && touched.email && errors.email}
-                        <button type="submit" disabled={isSubmitting}>
+                        {errors.email && touched.email ? (
+                            <Error>{errors.email}</Error>
+                        ) : null}
+
+                        <button type="submit">
                             Submit
                         </button>
                     </form>

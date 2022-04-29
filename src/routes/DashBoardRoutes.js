@@ -14,7 +14,7 @@ const DashBoardRoutes = () => {
                 <Route path='/' element={<ListMonitorias />} />
                 <Route path='/monitores' element={<ListMonitores />} />
                 <Route path='/editMonitorias' element={<EditMonitorias />} />
-                <Route path='/addMonitor' element={<AddMonitor />} />
+                <Route path='/addmonitor' element={<AddMonitor />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </div>
