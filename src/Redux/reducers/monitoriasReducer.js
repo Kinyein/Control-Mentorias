@@ -1,19 +1,19 @@
 import { types } from "../types/types";
 
 const initState = {
-    monitores: []
+    monitorias: []
 }
 
 export const monitorReducer = (state = initState, action) => {
     switch (action.type) {
-        case types.addMonitores:
+        case types.addMonitorias:
             return {
-                monitores: [action.payload]
+                monitorias: [action.payload]
             }
             
-        case types.listMonitores:
+        case types.listMonitorias:
             return {
-                monitores: [...action.payload]
+                monitorias: [...action.payload]
             }
 
         default:

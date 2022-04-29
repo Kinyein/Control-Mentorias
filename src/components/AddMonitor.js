@@ -10,7 +10,7 @@ let schema = yup.object().shape({
     lastNames: yup.string().required('Campo Requerido'),
     academicProgram: yup.string().required('Campo Requerido'),
     semester: yup.string().required('Campo Requerido'),
-    cedula: yup.string('').required('Campo Requerido'),
+    cedula: yup.string().required('Campo Requerido'),
     tel: yup.number('Debe escribir un numero valido').min(10).required('Campo Requerido'),
     email: yup.string().email('Debe escribir un correo valido').required('Campo Requerido')
 });
@@ -121,7 +121,7 @@ const AddMonitor = () => {
                         ) : null}
 
                         <button type="submit">
-                            Submit
+                            Agregar
                         </button>
                     </form>
                 )}
