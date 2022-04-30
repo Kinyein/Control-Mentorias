@@ -1,36 +1,44 @@
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import React from 'react'
+import uuid from 'react-uuid'
 import { useDispatch } from 'react-redux';
 import { ContainerForm, Error } from '../styles/styledComp/formsStyle';
-import { addMonitoriaAsync } from '../Redux/actions/monitoriasActions';
+import { addMonitoriaAsync, editMonitoriaAsync } from '../Redux/actions/monitoriasActions';
 
 let schema = yup.object().shape({
     materia: yup.string().required('Campo Requerido'),
     monitor: yup.string().required('Campo Requerido'),
-    date: yup.string().required('Campo Requerido'),
+    date: yup.date().required('Campo Requerido'),
     salon: yup.string().required('Campo Requerido'),
 });
 
-const AddMonitorias = () => {
+const AddMonitorias = ({ toEdit, data }) => {
 
     const dispatch = useDispatch()
 
     return (
         <ContainerForm>
-            <h1>Añadir Monitoria</h1>
+            <h1> {toEdit ? 'Editar' : 'Añadir'} Monitoria</h1>
             <Formik
-                initialValues={{
+                initialValues={toEdit ? {
+                    materia: data.materia,
+                    monitor: data.monitor,
+                    date: data.date,
+                    salon: data.salon,
+                    codigo: data.codigo
+                } : {
                     materia: '',
                     monitor: '',
                     date: '',
-                    salon: ''
+                    salon: '',
+                    codigo: uuid()
                 }}
                 validationSchema={schema}
 
                 onSubmit={(values) => {
-                    dispatch(addMonitoriaAsync(values))
-                    console.log(values)
+                    toEdit ? dispatch(editMonitoriaAsync(data.codigo, values))
+                        : dispatch(addMonitoriaAsync(values))
                 }}
             >
                 {({
@@ -64,9 +72,8 @@ const AddMonitorias = () => {
                             <Error>{errors.monitor}</Error>
                         ) : null}
                         <input
-                            type="date"
                             name="date"
-                            placeholder='Fecha'
+                            placeholder='YYYY-MM-DD'
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.date}
@@ -86,7 +93,7 @@ const AddMonitorias = () => {
                         ) : null}
 
                         <button type="submit">
-                            Agregar
+                            {toEdit ? 'Guardar' : "Agregar"}
                         </button>
                     </form>
                 )}

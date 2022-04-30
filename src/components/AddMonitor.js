@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addMonitorAsync } from '../Redux/actions/monitoresActions';
+import { addMonitorAsync, editMonitorAsync } from '../Redux/actions/monitoresActions';
 import { ContainerForm, Error } from '../styles/styledComp/formsStyle';
 
 let schema = yup.object().shape({
@@ -15,15 +15,23 @@ let schema = yup.object().shape({
     email: yup.string().email('Debe escribir un correo valido').required('Campo Requerido')
 });
 
-const AddMonitor = () => {
+const AddMonitor = ({ toEdit, data }) => {
 
     const dispatch = useDispatch()
 
     return (
         <ContainerForm>
-            <h1>Añadir Monitor</h1>
+            <h1> {toEdit ? 'Editar' : 'Añadir'} Monitor</h1>
             <Formik
-                initialValues={{
+                initialValues={toEdit ? {
+                    names: data.names,
+                    lastNames: data.lastNames,
+                    academicProgram: data.academicProgram,
+                    semester: data.semester,
+                    cedula: data.cedula,
+                    tel: data.tel,
+                    email: data.email
+                } : {
                     names: '',
                     lastNames: '',
                     academicProgram: '',
@@ -35,8 +43,8 @@ const AddMonitor = () => {
                 validationSchema={schema}
 
                 onSubmit={(values) => {
-                    dispatch(addMonitorAsync(values))
-                    console.log(values)
+                    toEdit ? dispatch(editMonitorAsync(data.cedula, values))
+                        : dispatch(addMonitorAsync(values))
                 }}
             >
                 {({
@@ -121,12 +129,12 @@ const AddMonitor = () => {
                         ) : null}
 
                         <button type="submit">
-                            Agregar
+                            {toEdit ? 'Guardar' : "Agregar"}
                         </button>
                     </form>
                 )}
             </Formik>
-        </ContainerForm>
+        </ContainerForm >
     )
 }
 
