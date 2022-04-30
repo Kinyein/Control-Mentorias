@@ -1,4 +1,5 @@
 import { types } from "../types/types"
+import Swal from 'sweetalert2'
 import { collection, addDoc, getDocs, doc, query, where, updateDoc, deleteDoc } from "firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig";
 
@@ -15,6 +16,13 @@ export const addMonitoriaAsync = data => {
             .then(resp => {
                 console.log(resp)
                 dispatch(addMonitoriaSinc(data))
+                Swal.fire({
+                    width: 400,
+                    icon: 'success',
+                    padding: '2em',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -65,6 +73,13 @@ export const editMonitoriaAsync = (codigo, data) => {
         await updateDoc(documentRef, data)
             .then(resp => {
                 dispatch(editMonitoriaSinc(data))
+                Swal.fire({
+                    width: 400,
+                    icon: 'success',
+                    padding: '2em',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 dispatch(listMonitoriasAsync())
             })
             .catch(error => console.log(error))
@@ -88,6 +103,7 @@ export const deleteMonitoriaAsync = (codigo) => {
             deleteDoc(doc(dataBase, 'monitorias', d.id)) //El doc es cada campo dentro de la coleccion, cada monitor
         }))
         dispatch(deleteMonitoriaSinc(codigo))
+        Swal.fire('Eliminado', '', 'success')
         dispatch(listMonitoriasAsync())
     }
 }

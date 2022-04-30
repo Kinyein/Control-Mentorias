@@ -7,6 +7,7 @@ import { deleteMonitoriaAsync, listMonitoriasAsync } from '../Redux/actions/moni
 import { Container, ListContainer } from '../styles/styledComp/listStyles'
 import { Modal } from 'react-bootstrap'
 import AddMonitorias from './AddMonitorias'
+import Swal from 'sweetalert2'
 
 const ListMonitorias = () => {
 
@@ -23,6 +24,23 @@ const ListMonitorias = () => {
     setToEdit(data)
     setShow(true)
   };
+
+  const handleDelete = (codigo) => {
+    Swal.fire({
+      title: '¿Desea borrar el producto?',
+      showDenyButton: true,
+      denyButtonText: `Borrar`,
+      confirmButtonText: 'Cancel',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isDenied) {
+
+        dispatch(deleteMonitoriaAsync(codigo))
+        
+      }
+    })
+
+  }
 
   useEffect(() => {
     dispatch(listMonitoriasAsync())
@@ -43,7 +61,7 @@ const ListMonitorias = () => {
 
                 <div className='buttonContainer'>
                 <button className='button editButton' onClick={() => handleEdit(mo)}><FaRegEdit /></button>
-                  <button className='button deleteButton' onClick={() => {dispatch(deleteMonitoriaAsync(mo.codigo))}}><MdDeleteOutline /></button>
+                  <button className='button deleteButton' onClick={() => handleDelete(mo.codigo)}><MdDeleteOutline /></button>
                 </div>
 
               </div>

@@ -7,6 +7,7 @@ import { deleteMonitorAsync, listMonitoresAsync } from '../Redux/actions/monitor
 import { Container, ListContainer } from '../styles/styledComp/listStyles'
 import { Modal } from 'react-bootstrap';
 import AddMonitor from './AddMonitor'
+import Swal from 'sweetalert2'
 
 const ListMonitores = () => {
 
@@ -28,6 +29,24 @@ const ListMonitores = () => {
     setShow(true)
   };
 
+  const handleDelete = (codigo) => {
+    Swal.fire({
+      title: '¿Desea borrar el producto?',
+      showDenyButton: true,
+      denyButtonText: `Borrar`,
+      confirmButtonText: 'Cancel',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isDenied) {
+
+        dispatch(deleteMonitorAsync(codigo))
+
+        
+      }
+    })
+
+  }
+
   return (
     <Container>
       <h1>Monitores</h1>
@@ -44,7 +63,7 @@ const ListMonitores = () => {
                 </div>
                 <div className='buttonContainer'>
                   <button className='button editButton' onClick={() => handleEdit(mo)}><FaRegEdit /></button>
-                  <button className='button deleteButton' onClick={() => dispatch(deleteMonitorAsync(mo.cedula))}><MdDeleteOutline /></button>
+                  <button className='button deleteButton' onClick={() => handleDelete(mo.cedula)}><MdDeleteOutline /></button>
                 </div>
               </div>
               <div style={{ margin: '20px 0' }}>
