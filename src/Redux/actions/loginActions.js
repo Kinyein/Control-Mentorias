@@ -1,6 +1,6 @@
 import { types } from "../types/types"
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
-import { google } from "../../Firebase/firebaseConfig"
+import { facebook, google } from "../../Firebase/firebaseConfig"
 
 const auth = getAuth()
 
@@ -40,6 +40,20 @@ export const loginGoogle = () => {
         })
         .catch(error => {
             console.log(error)
+        })
+}
+
+export const loginFacebook = () => {
+    const auth = getAuth()
+
+    signInWithPopup(auth, facebook)
+        .then((resp, { user }) => {
+            console.log(resp)
+            console.log('Usuario autorizado')
+        })
+        .catch((error) => {
+            console.log(error)
+            console.log('Usuario no autorizado')
         })
 }
 
