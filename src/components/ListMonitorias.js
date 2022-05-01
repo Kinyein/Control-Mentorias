@@ -27,7 +27,7 @@ const ListMonitorias = () => {
 
   const handleDelete = (codigo) => {
     Swal.fire({
-      title: '¿Desea borrar el producto?',
+      title: '¿Desea borrar la monitoria?',
       showDenyButton: true,
       denyButtonText: `Borrar`,
       confirmButtonText: 'Cancel',
@@ -54,7 +54,7 @@ const ListMonitorias = () => {
       <ListContainer>
 
         {monitorias.map((mo, index) => (
-          <Card style={{ width: '20rem' }} key={index}>
+          <Card style={{ width: '19rem' }} key={index}>
             <Card.Body>
               <div className='headerCard'>
                 <Card.Title>{mo.materia}</Card.Title>

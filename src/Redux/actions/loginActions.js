@@ -34,9 +34,8 @@ export const loginAsync = ({ email, password }) => {
 
 export const loginGoogle = () => {
     signInWithPopup(auth, google)
-        .then(resp => {
-            console.log(resp)
-            console.log(resp.user)
+        .then(() => {
+            
         })
         .catch(error => {
             console.log(error)

@@ -22,6 +22,10 @@ export const monitoriasReducer = (state = initState, action) => {
             return {
                 monitorias: state.monitorias.filter(mo => mo.codigo !== action.payload)
             }
+        case types.filterName:
+            return {
+                monitorias: [...state.monitorias.filter(mo => mo.monitor === action.payload)]
+            }
 
         default:
             return state

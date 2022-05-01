@@ -107,3 +107,42 @@ export const deleteMonitoriaAsync = (codigo) => {
         dispatch(listMonitoriasAsync())
     }
 }
+
+export const filterActionAsync = (search) => {
+    return async (dispatch) => {
+        if (search === '') {
+            dispatch(listMonitoriasAsync())
+        } else {
+            const getCollection = collection(dataBase, 'monitorias');
+            const q = query(getCollection, where('monitor', '==', search))
+            const getDataQ = await getDocs(q)
+            const filtered = []
+            getDataQ.forEach(d => {
+                const { codigo, date, materia, monitor, salon } = d._document.data.value.mapValue.fields
+
+                const data = {
+                    codigo: codigo.stringValue,
+                    date: date.stringValue,
+                    materia: materia.stringValue,
+                    monitor: monitor.stringValue,
+                    salon: salon.stringValue
+                }
+
+
+
+                filtered.push(data)
+            })
+
+            console.log(filtered)
+            dispatch(filterActionSinc(search))
+            dispatch(listMonitoriasSinc(filtered))
+        }
+    }
+}
+
+export const filterActionSinc = (search) => {
+    return {
+        type: types.filterName,
+        payload: search
+    }
+}

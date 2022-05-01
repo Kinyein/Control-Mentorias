@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const ListContainer = styled.div`
     display: flex;
+    justify-content: center;
     gap: 20px;
     margin: 20px;
     flex-wrap: wrap;

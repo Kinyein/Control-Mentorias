@@ -31,7 +31,7 @@ const ListMonitores = () => {
 
   const handleDelete = (codigo) => {
     Swal.fire({
-      title: '¿Desea borrar el producto?',
+      title: '¿Desea borrar el monitor?',
       showDenyButton: true,
       denyButtonText: `Borrar`,
       confirmButtonText: 'Cancel',
@@ -54,7 +54,7 @@ const ListMonitores = () => {
 
 
         {monitores.map((mo, index) => (
-          <Card style={{ width: '20rem' }} key={index}>
+          <Card style={{ width: '19rem' }} key={index}>
             <Card.Body>
               <div className='headerCard'>
                 <div>
