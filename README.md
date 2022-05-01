@@ -15,9 +15,7 @@ You'll need (Node.js)[https://nodejs.org/en/] installed
 - Run `$ npm start` 
 - Visit `http://localhost:3000
 
-Thats all
-
-# Style Guide
+## Style Guide
 darkpurple: #363062
 softpurple: #827397
 purple: #4D4C7D
