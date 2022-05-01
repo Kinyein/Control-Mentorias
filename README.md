@@ -5,7 +5,7 @@ You can login or register to add, edit, and or delete a 'monitor' or a 'monitori
 
 ## Set up
 
-You'll need (Node.js)[https://nodejs.org/en/] installed
+You'll need [Node.js](https://nodejs.org/en/) installed
 
 - Clone the repository 
 - Run `$ npm install` to install the dependencies 
@@ -16,9 +16,10 @@ You'll need (Node.js)[https://nodejs.org/en/] installed
 - Visit `http://localhost:3000
 
 ## Style Guide
-darkpurple: #363062
-softpurple: #827397
-purple: #4D4C7D
-red: lightcoral
-blue: lightblue
-formColor: #E9D5DA
+
+- darkpurple: #363062
+- softpurple: #827397
+- purple: #4D4C7D
+- red: lightcoral
+- blue: lightblue
+- formColor: #E9D5DA
