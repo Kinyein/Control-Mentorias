@@ -47,7 +47,7 @@ export const loginFacebook = () => {
     const auth = getAuth()
 
     signInWithPopup(auth, facebook)
-        .then((resp, { user }) => {
+        .then((resp) => {
             console.log(resp)
             console.log('Usuario autorizado')
         })

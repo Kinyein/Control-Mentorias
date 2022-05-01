@@ -7,7 +7,10 @@ export const loginReducers = (state = {}, action) => {
                 email: action.payload.email,
                 password: action.payload.password
             }
-    
+        case types.logout:
+            return{
+                
+            }
         default:
             return state
     }
