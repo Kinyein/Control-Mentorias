@@ -4,7 +4,13 @@ import styled from "styled-components";
 export const ContainerForm = styled.div`
     text-align: center;
     margin: 50px;
-    /* background-color: ; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1{
+        color: white;
+    }
 
     img.logoImg{
         width: 100px;
@@ -16,6 +22,9 @@ export const ContainerForm = styled.div`
         align-items: center;
         gap: 10px;
         margin: 20px;
+        background-color: #E9D5DA;
+        padding: 20px 40px;
+        border-radius: 8px;
 
         input{
             padding: 6px 15px;
@@ -23,31 +32,36 @@ export const ContainerForm = styled.div`
             border-radius: 4px;
         }
         input:focus{
-            /* outline: 2px solid #F0AD64; */
+            outline: 1px solid #363062;
         }
 
         button{
-            /* background: #7fe881; */
-            /* border: 1px solid #F0AD64; */
+            background: #4D4C7D;
+            border: 1px solid #363062;
             padding: 10px 30px;
             border-radius: 4px;
+            color: white;
             margin: 20px;
             cursor: pointer;
+            transition: background-color .2s;
         }
-        button:hover{
-            /* background:  */
+        button:active{
+            background: #363062;
         }
     }
 
     p{
         a{
-            color: #0E7184;
+            color: #827397;
         }
     }
 `
 export const Error = styled.div`
-    color: #FF0E0E;
-    font-size: 14px;
+    color: #AF2F2F;
+    /* background-color: white;
+    padding: 1px 10px; 
+    border-radius: 4px; */
+    font-size: 16px;
 `
 export const LoginGoogleFace = styled.div`
     /* margin: 20px; */
@@ -76,11 +90,11 @@ export const LoginGoogleFace = styled.div`
     }
 
     .iconContainerGoogle{
-        background-color: #F23C3C;
+        background-color: #AF2F2F;
     }
 
     .iconContainerFacebook{
-        background-color: #64A2FF;
+        background-color: #2664AB;
     }
 
     .iconContainer:hover{

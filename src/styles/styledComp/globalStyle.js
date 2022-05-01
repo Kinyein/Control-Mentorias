@@ -6,5 +6,9 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-family: 'Raleway', sans-serif;
     }
+
+    body{
+        background-color: #827397;
+    }
     
 `

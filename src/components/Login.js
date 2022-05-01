@@ -16,10 +16,6 @@ const Login = () => {
 
     const dispatch = useDispatch()
 
-    const handleGoogle = () => {
-        dispatch(loginGoogle())
-    }
-
     return (
         <ContainerForm>
             <h1>Login</h1>
@@ -76,7 +72,7 @@ const Login = () => {
 
 
                         <LoginGoogleFace>
-                            <div onClick={handleGoogle} className='iconContainer iconContainerGoogle'><BsGoogle className='icon iconGoogle' /> <p>Inicia Sesión con Google</p></div>
+                            <div onClick={() => dispatch(loginGoogle())} className='iconContainer iconContainerGoogle'><BsGoogle className='icon iconGoogle' /> <p>Inicia Sesión con Google</p></div>
                             <div onClick={() => dispatch(loginFacebook())} className='iconContainer iconContainerFacebook'><BsFacebook className='icon iconFacebook' /> <p>Inicia Sesión con Facebook</p></div>
                         </LoginGoogleFace>
 

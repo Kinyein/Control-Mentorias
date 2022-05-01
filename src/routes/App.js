@@ -29,7 +29,6 @@ const App = () => {
     return (
       <ContainerLoadingPage>
         <div>
-          {/* <img className="logoImg" src="https://res.cloudinary.com/dainl1ric/image/upload/v1651120998/bird_2_djvrbx.png" alt="bird-icon" /> */}
           <SpinnerLoading />
         </div>
 

@@ -41,7 +41,7 @@ const ListMonitores = () => {
 
         dispatch(deleteMonitorAsync(codigo))
 
-        
+
       }
     })
 
@@ -54,12 +54,14 @@ const ListMonitores = () => {
 
 
         {monitores.map((mo, index) => (
-          <Card style={{ width: '19rem' }} key={index}>
+          <Card style={{ width: '19rem', backgroundColor: '#4D4C7D', color: 'white' }} key={index}>
             <Card.Body>
               <div className='headerCard'>
                 <div>
                   <Card.Title>{mo.names}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">{mo.lastNames}</Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    <p style={{ color: 'white' }}> {mo.lastNames} </p>
+                  </Card.Subtitle>
                 </div>
                 <div className='buttonContainer'>
                   <button className='button editButton' onClick={() => handleEdit(mo)}><FaRegEdit /></button>
@@ -87,7 +89,7 @@ const ListMonitores = () => {
       </ListContainer>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton >
           <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -96,7 +98,7 @@ const ListMonitores = () => {
         <Modal.Footer>
         </Modal.Footer>
       </Modal>
-      
+
     </Container>
   )
 }

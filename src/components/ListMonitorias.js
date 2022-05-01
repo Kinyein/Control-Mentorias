@@ -54,7 +54,7 @@ const ListMonitorias = () => {
       <ListContainer>
 
         {monitorias.map((mo, index) => (
-          <Card style={{ width: '19rem' }} key={index}>
+          <Card style={{ width: '19rem', backgroundColor: '#4D4C7D', color: 'white' }} key={index}>
             <Card.Body>
               <div className='headerCard'>
                 <Card.Title>{mo.materia}</Card.Title>

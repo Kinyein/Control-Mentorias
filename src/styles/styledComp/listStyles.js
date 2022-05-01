@@ -6,6 +6,10 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     margin: 20px 0;
+
+    h1{
+        color: lightgray;
+    }
 `
 
 export const ListContainer = styled.div`
@@ -36,11 +40,14 @@ export const ListContainer = styled.div`
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                background-color: #363062;
+                color: white;
                 transition:  transform .3s;
             }
     
             .button.editButton:hover{
                 background-color: lightblue;
+                color: #000;
                 transform: scale(1.1);
             }
     

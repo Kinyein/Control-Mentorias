@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Button, Offcanvas, Navbar, Container, Nav, Form } from 'react-bootstrap'
+import { Offcanvas, Navbar, Container, Nav, Form } from 'react-bootstrap'
 import { FaUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logoutAsync } from '../Redux/actions/loginActions'
 import { filterActionAsync } from '../Redux/actions/monitoriasActions'
+import { ButtonPerfil, ContainerNavBar } from '../styles/styledComp/navbarStyle'
 
 const NavBar = () => {
 
@@ -39,9 +40,9 @@ const NavBar = () => {
 
 
   return (
-    <div>
+    <ContainerNavBar>
 
-      <Navbar bg="light" expand="lg">
+      <Navbar variant="dark" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/">Inicio</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -67,9 +68,9 @@ const NavBar = () => {
                 />
               </Form>
 
-              <Button onClick={handleShow}>
+              <ButtonPerfil onClick={handleShow}>
                 <FaUser />
-              </Button>
+              </ButtonPerfil>
 
             </Nav>
           </Navbar.Collapse>
@@ -87,7 +88,7 @@ const NavBar = () => {
           <button onClick={handleLogout}>Cerrar sesión</button>
         </Offcanvas.Body>
       </Offcanvas>
-    </div>
+    </ContainerNavBar>
   )
 }
 
