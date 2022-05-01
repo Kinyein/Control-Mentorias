@@ -20,6 +20,6 @@ You'll need [Node.js](https://nodejs.org/en/) installed
 - darkpurple: #363062
 - softpurple: #827397
 - purple: #4D4C7D
-- red: lightcoral
+- red: #AF2F2F
 - blue: lightblue
 - formColor: #E9D5DA
