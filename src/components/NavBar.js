@@ -57,7 +57,7 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/addmonitor">Agregar Monitor</Nav.Link>
               <Nav.Link as={Link} to="/addmonitoria">Agregar Monitoria</Nav.Link>
 
-              {/* <Nav.Link onClick={handleLogout}>Cerrar sesión</Nav.Link> */}
+              
               <Form onSubmit={handleSubmit}>
                 <Form.Control
                   type="text"
@@ -68,9 +68,11 @@ const NavBar = () => {
                 />
               </Form>
 
-              <ButtonPerfil onClick={handleShow}>
+              <Nav.Link onClick={handleLogout}>Cerrar sesión</Nav.Link>
+
+              {/* <ButtonPerfil onClick={handleShow}>
                 <FaUser />
-              </ButtonPerfil>
+              </ButtonPerfil> */}
 
             </Nav>
           </Navbar.Collapse>
@@ -79,7 +81,7 @@ const NavBar = () => {
 
 
 
-      <Offcanvas show={show} onHide={handleClose}>
+      {/* <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Perfil</Offcanvas.Title>
         </Offcanvas.Header>
@@ -87,7 +89,8 @@ const NavBar = () => {
           Informacion acerca de usuario logueado
           <button onClick={handleLogout}>Cerrar sesión</button>
         </Offcanvas.Body>
-      </Offcanvas>
+      </Offcanvas> */}
+      
     </ContainerNavBar>
   )
 }
