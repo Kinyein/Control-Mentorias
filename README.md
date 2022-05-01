@@ -13,7 +13,7 @@ You'll need [Node.js](https://nodejs.org/en/) installed
 ## Up and running 
 
 - Run `$ npm start` 
-- Visit `http://localhost:3000
+- Visit `http://localhost:3000`
 
 ## Style Guide
 
